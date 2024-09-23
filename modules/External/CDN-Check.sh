@@ -1,17 +1,27 @@
 #!/bin/bash
-
 if [ $# -ne 1 ]
   then
     echo "Args is not Valid"
-    echo "Usage: bash Recon-E-to-I-screen-shoter.sh <SubdomainList(example.com-live-domain.txt)>"
+    echo "Usage: bash CDN-Check.sh Domain List file like (example.com.txt)>"
     exit
 fi
 
+RED='\033[0;31m'
+NC='\033[0m' # No Color
 file_name=` echo $1 |  sed "s/.txt//g" `
+exec 3<> $file_name-CDN-check.txt
 
+echo -e "if you want to Exit Press ${RED}Ctrl+z ${NC} for end checking"
 
-echo "Start Run httpx for take favicon from urls in file $1"
+while IFS= read -r line; do
+  CheckResult=$(python3 wappy -u "$line" | grep CDN 2>&1)
+  if [ "$CheckResult" != "" ]; then
+    echo -e "Checking -----> $line ${RED} $CheckResult${NC}";
+    echo "$line" >&3
+  else
+      echo "Checking -----> $line" 
+  fi
+done < "$1"
 
-cat $1 | httpx -favicon -follow-redirects -threads 40 -rate-limit 10 -silent -filter-code 404 -random-agent -output $file_name-favicon.txt
-
-echo "httpx Done & result in $file_name-favicon.txt"
+exec 3>&-
+echo "checking Done & result in $file_name-CDN-check.txt ==> len: ` cat $file_name-CDN-check.txt | wc -l `"
