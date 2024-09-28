@@ -21,7 +21,7 @@ cat << EOF
                                                   
 EOF
 
-echo "Run Subfinder ..."
+echo "Run Subfinder All ..."
 subfinder -d $1 -all -silent -recursive >> $1-subfinder.txt
 echo "Subfinder Done & result in $1-subfinder.txt ==> len: ` cat $1-subfinder.txt | wc -l`"
 
