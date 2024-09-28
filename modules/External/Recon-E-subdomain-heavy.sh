@@ -32,7 +32,8 @@ echo "sublist3r Done & result in $1-subli3ter.txt ==> len: ` cat $1-subli3ter.tx
 
 echo
 echo "Run amass ..."
-amass intel -d $1 -whois -o $1-amass.txt > /dev/null
+#amass intel -d $1 -whois -o $1-amass.txt > /dev/null
+amass enum -d $1 -o $1-amass.txt > /dev/null
 echo "amass Done & result in $1-amass.txt ==> len: ` cat $1-amass.txt | wc -l `"
 
 echo
@@ -47,7 +48,7 @@ echo "waybackurls Done & result in $1-waybackurls.txt ==> len: ` cat $1-waybacku
 
 echo
 echo "Run github-subdomains ..."
-github-subdomains -d $1 -k -e -q -o $1-github-subdomains.txt > /dev/null
+github-subdomains -d $1 -k -e -q -t .token -o $1-github-subdomains.txt > /dev/null
 echo "github-subdomains Done & result in $1-github-subdomains.txt ==> len: ` cat $1-github-subdomains.txt | wc -l `"
 
 echo
