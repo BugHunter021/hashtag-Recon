@@ -6,7 +6,7 @@ if [ $# -ne 1 ]
     echo "Usage: bash Recon-E-Subdomain-heavy.sh <Domain(example.com)>"
     exit
 fi
-
+echo "Chnaged by BugHunter021 .:. add snumaration with word list"
 cat << EOF
 
      _     _          _                            ______ 
