@@ -14,7 +14,7 @@ exec 3<> $file_name-CDN-check.txt
 echo -e "if you want to Exit Press ${RED}Ctrl+z ${NC} for end checking"
 
 while IFS= read -r line; do
-  CheckResult=$(python3 wappy -u "$line" | grep CDN 2>&1)
+  CheckResult=$(wappy -u "$line" | grep CDN 2>&1)
   if [ "$CheckResult" != "" ]; then
     echo -e "Checking -----> $line ${RED} $CheckResult${NC}";
     echo "$line" >&3
