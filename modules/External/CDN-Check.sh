@@ -3,6 +3,7 @@ if [ $# -ne 1 ]
   then
     echo "Args is not Valid"
     echo "Usage: bash CDN-Check.sh Domain List file like (example.com.txt)>"
+    echo "Before use this tool install https://github.com/gokulapap/wappalyzer-cli "
     exit
 fi
 
