@@ -22,17 +22,16 @@ cat << EOF
 EOF
 
 echo "Run shuffledns & Brute force with heavy wordlist on: $1"
-shuffledns -d $1 -r ./wordlist/dns-resolvers.txt -w ./wordlist/dns-wordlist-heavy.txt -silent -o $1.dnsBrute.txt
+shuffledns -d $1 -r ./wordlist/dns-resolvers.txt -w ./wordlist/all-subdomain.txt -silent -o $1.dnsBrute.txt
 echo "shuffledns Done & result in $1.dnsBrute.txt ==> len: ` cat $1.dnsBrute.txt | wc -l `"
 
 echo "Run shuffledns & Brute force with 4 character wordlist on: $1"
 shuffledns -d $1 -r ./wordlist/dns-resolvers.txt -w ./wordlist/4wordlist.txt -silent -o $1.dnsBrute.4word.txt
 echo "shuffledns Done & result in $1.dnsBrute.4word.txt ==> len: ` cat $1.dnsBrute.4word.txt | wc -l `"
-
-
+cat $1.dnsBrute.txt $1.dnsBrute.4word.txt | sort -u > $1.dnsBrute.Merg.txt
 
 echo "Run dnsgen on: $1"
-cat $2 $1.dnsBrute.txt | sort -u | dnsgen -w ./wordlist/dns-dnsgen-wordlist-heavy.txt - > $1.dnsgen.txt
+cat $2 $1.dnsBrute.Merg.txt | sort -u | dnsgen -w ./wordlist/all-subdomain.txt - > $1.dnsgen.txt
 echo "dnsgen Done & result in $1.dnsgen.txt ==> len: ` cat $1.dnsgen.txt | wc -l `"
 
 echo "Run shuffledns & Resolving on: $1.dnsgen.txt"
