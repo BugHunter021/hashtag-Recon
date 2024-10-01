@@ -38,7 +38,7 @@ dnsx -cname -resp -l $1 -r ./wordlist/dns-resolvers.txt -o $file_name-cname.txt 
 echo "dnsx cname-Record Done & result in $file_name-cname.txt ==> len: ` cat $file_name-cname.txt | wc -l `"
 
 echo
-echo "Run cut-cdn & Extract CND Ips from: $1 file"
+echo "Run cut-cdn & Extract CDN Ips from: $1 file"
 cut-cdn -i $file_name.ip-A.txt -o $file_name.No-cdn.txt -silent
 echo "cut-cdn Done & result in $file_name.No-cdn.txt ==> len: ` cat $file_name.No-cdn.txt | wc -l `"
 
