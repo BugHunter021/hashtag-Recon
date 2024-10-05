@@ -24,6 +24,7 @@ print_help() {
     echo "OPTIONS: [u:l:p:oysh]"
     echo "  -o| --orgName             Search on Organization Name"
     echo "  -u                        Target or name"
+    echo "  -f                        File list of targets"
     echo "  --web                     A fast way to dump data from small targets"
     echo "  -l| --limit               Default limit is 300"
     echo "  -y| --yaml                The default value of yaml is false, which means it will only return subdomains from the COMMON_NAME and NAME_VALUE fields in output"
@@ -86,6 +87,10 @@ while true; do
     case "$1" in
         -u)
             target=$2
+            shift 2
+            ;;
+	-d)
+            targets=$2
             shift 2
             ;;
         -l|--limit)
