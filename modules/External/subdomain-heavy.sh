@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 if [ $# -ne 1 ]
   then
     echo "Args is not Valid"
