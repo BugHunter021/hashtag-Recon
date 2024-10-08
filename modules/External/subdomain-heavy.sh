@@ -48,7 +48,7 @@ echo $1 | waybackurls  | cut -d / -f3 | sort -u > $1-waybackurls.txt
 echo "waybackurls Done & result in $1-waybackurls.txt ==> len: ` cat $1-waybackurls.txt | wc -l `"
 
 echo
-echo "Run github-subdomains ..."
+echo "Run github-subdomains ... "
 github-subdomains -d $1 -k -e -q -t .token -o $1-github-subdomains.txt > /dev/null
 echo "github-subdomains Done & result in $1-github-subdomains.txt ==> len: ` cat $1-github-subdomains.txt | wc -l `"
 
