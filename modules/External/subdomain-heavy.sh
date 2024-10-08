@@ -26,6 +26,10 @@ echo "Run Subfinder All ..."
 subfinder -d $1 -all -silent -recursive >> $1-subfinder.txt
 echo "Subfinder Done & result in $1-subfinder.txt ==> len: ` cat $1-subfinder.txt | wc -l`"
 
+echo "Run crt.sh with pgsql ..."
+bash crt.sh -u $1  -l 150 -s -o $1-crt.txt
+echo "CRT.sh Done & result in $1-crt.txt ==> len: ` cat $1-crt.txt | wc -l`"
+
 echo
 echo "Run sublist3r ..."
 sublist3r -d $1 -t 10 -o $1-subli3ter.txt > /dev/null
@@ -63,9 +67,9 @@ echo "Send Request to get subdomain from content-security-policy header ..."
 curl -vsLk $1 --stderr - | awk '/content-security-policy:/' | grep -Eo "[a-zA-Z0-9./?=_-]*" |  sed -e '/\./!d' -e '/[^A-Za-z0-9._-]/d' -e 's/^\.//' > $1-csp.txt
 echo "content-security-policy result in $1-csp.txt ==> len: ` cat $1-csp.txt | wc -l `"
 
-cat $1-subfinder.txt $1-subli3ter.txt $1-amass.txt $1-assetfinder.txt $1-waybackurls.txt $1-github-subdomains.txt $1-jldc.txt $1-csp.txt | grep $1 | sort -u > $1.Subs-provider.txt
+cat $1-subfinder.txt $1-crt.txt $1-subli3ter.txt $1-amass.txt $1-assetfinder.txt $1-waybackurls.txt $1-github-subdomains.txt $1-jldc.txt $1-csp.txt | grep $1 | sort -u > $1.Subs-provider.txt
 
-rm $1-subfinder.txt $1-subli3ter.txt $1-amass.txt $1-assetfinder.txt $1-waybackurls.txt $1-github-subdomains.txt $1-jldc.txt $1-csp.txt
+rm $1-subfinder.txt $1-crt.txt $1-subli3ter.txt $1-amass.txt $1-assetfinder.txt $1-waybackurls.txt $1-github-subdomains.txt $1-jldc.txt $1-csp.txt
 
 echo "All Subdomains in $1.Subs-provider.txt ==> len: ` cat $1.Subs-provider.txt | wc -l `"
 echo
