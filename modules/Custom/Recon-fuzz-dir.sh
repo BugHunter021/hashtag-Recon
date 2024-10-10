@@ -51,6 +51,7 @@ ffuf -u $1/FUZZ -w ./wordlist/fuzz-cgi-files.txt -H "User-Agent: Mozilla/5.0 (Wi
 echo "fuzz cgi dirs Done & final result in $domain_name.fuzz-dir-cgi-files.csv ==> len: ` cat $domain_name.fuzz-dir-cgi-files.csv | wc -l `"
 
 cat $domain_name.fuzz-dir-cve.csv $domain_name.fuzz-dir-leaky-misconfigs.csv $domain_name.fuzz-dir-backup_files.txt $domain_name.fuzz-dir-api-info.csv $domain_name.fuzz-dir-cgi-files.csv > $domain_name-fuzz-dir.csv
+cat $domain_name-fuzz-dir.csv | grep -i -E 'http' | awk '{print $2}'
 
 rm $domain_name.fuzz-dir-cve.csv $domain_name.fuzz-dir-leaky-misconfigs.csv $domain_name.fuzz-dir-backup_files.txt $domain_name.fuzz-dir-api-info.csv $domain_name.fuzz-dir-cgi-files.csv
 
