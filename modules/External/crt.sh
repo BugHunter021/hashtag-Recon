@@ -413,3 +413,4 @@ fi
 
 # remove temp file
 [[ -z "$path" ]] && rm "$file"
+echo ""
