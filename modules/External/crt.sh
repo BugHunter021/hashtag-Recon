@@ -148,7 +148,7 @@ if [ "$silent" = false ];then
 |  ▐█· ▐█▌█▌▐█▌▐█ ▌▐▌▐█· ██▀·██ ▄▄▐▀▀▄  ▐█.▪
 |  ██. ██ ▐█▄█▌██ ██▌▐█▌▐█▪·•▐███▌▐█•█▌ ▐█▌·
 |  ▀▀▀▀▀•  ▀▀▀ ▀▀  █▪▀▀▀.▀   ·▀▀▀ .▀  ▀ ▀▀▀ ">&2
-    echo "|  Last Updated: $human_readable"
+    #echo "|  Last Updated: $human_readable"
     echo "|">&2
     echo "|">&2
 
@@ -348,8 +348,8 @@ exec_sql() {
 
 exec_sql  "$target" "$flag" "$count" "$file"
 
-echo "=========="
-echo "path:$path"
+#echo "=========="
+#echo "path:$path"
 
 if [[ -n "$path" ]]; then
 {
