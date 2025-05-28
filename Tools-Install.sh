@@ -110,6 +110,14 @@ echo "Install arjun & x8"
     cp x86_64-linux-x8 /usr/local/sbin/x8
     cd ..
 
+echo "Install unfurl"
+	wget https://github.com/tomnomnom/unfurl/releases/download/v0.0.1/unfurl-linux-amd64-0.0.1.tgz
+	tar xzf unfurl-linux-amd64-0.0.1.tgz
+	sudo mv unfurl /usr/bin/
+	rm -rf unfurl-linux-amd64-0.0.1.tgz
+
+
+
     cp /root/go/bin/* /usr/local/sbin/ || cp /home/${USER}/go/bin/* /usr/local/sbin/
 
 cd ..
