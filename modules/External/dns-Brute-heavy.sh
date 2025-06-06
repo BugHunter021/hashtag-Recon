@@ -42,3 +42,4 @@ echo "shuffledns Done & result in $1.dnsBrute-gen.txt ==> len: ` cat $1.dnsBrute
 echo
 echo "All Resolving Subdomain in $1.dnsBrute-gen.txt $1.dnsBrute.txt ==> len: ` cat $1.dnsBrute-gen.txt $1.dnsBrute.txt | wc -l `"
 echo
+
