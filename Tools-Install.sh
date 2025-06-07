@@ -68,6 +68,7 @@ echo "httpx, getJS, katana, gospider, unfurl, nuclei, gauplus"
     go install github.com/projectdiscovery/katana/cmd/katana@latest
     go install github.com/jaeles-project/gospider@latest
     go install github.com/tomnomnom/unfurl@latest&\
+    go install -v github.com/owasp-amass/amass/v4/...@master
 
 echo "Install whatweb wafw00f"
     apt install whatweb wafw00f -y
