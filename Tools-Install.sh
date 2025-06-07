@@ -18,9 +18,11 @@ mkdir tools-src
 cd tools-src
 
 echo "First we need isntall common tools"
-echo "such as Nmap & jq & dos2unix & ..."
+echo "such as Nmap & jq & dos2unix & postgresql & ..."
     apt update -y
     apt install nmap jq dos2unix curl wget git whois apktool -y
+    sudo apt-get install -y postgresql-client
+    
 
 #===============
 echo "second install External Recon Tools"
